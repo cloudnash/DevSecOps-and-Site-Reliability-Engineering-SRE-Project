@@ -15,4 +15,4 @@ spec:
     spec:
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:latest
+        image: ghcr.io/cloudnash/leaky-app:d765dd1ca0981e1653a9c0d8ad17b331321569dc
