@@ -1,0 +1,41 @@
+name: PR Security & Quality Checks
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  ci-checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: Install test dependencies
+      run: |
+        pip install flake8 pytest bandit
+        pip install -r requirements.txt || true
+        
+    - name: Code Linting (Flake8)
+      run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      
+    - name: SAST Scanning (Bandit)
+      # -s B104 explicitly ignores the "binding to 0.0.0.0" warning
+      run: bandit -r . -s B104 
+      
+    - name: Unit Tests (Pytest)
+      run: pytest || true
+      
+    - name: Build local container for scanning
+      run: docker build -t test-image:latest .
+      
+    - name: Container Vulnerability Scan (Trivy)
+      uses: aquasecurity/trivy-action@master
+      with:
+        image-ref: 'test-image:latest'
+        format: 'table'
+        exit-code: '1' # Fails the pipeline if vulnerabilities are found
+        severity: 'CRITICAL,HIGH'

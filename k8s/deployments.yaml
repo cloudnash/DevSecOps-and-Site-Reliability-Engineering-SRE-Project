@@ -1,0 +1,18 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaky-app-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leaky-app
+  template:
+    metadata:
+      labels:
+        app: leaky-app
+    spec:
+      containers:
+      - name: leaky-app
+        image: ghcr.io/cloudnash/leaky-app:latest

@@ -1,0 +1,49 @@
+name: Release and Update Manifests
+on:
+  push:
+    branches: [ "main" ]
+
+# Grant permissions to push to GHCR and commit back to the repo
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build-push-update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Build and Push Docker Image
+      run: |
+        # Convert repository owner to lowercase (Docker requirement)
+        REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+        IMAGE_ID=ghcr.io/$REPO_OWNER/leaky-app
+        VERSION=${{ github.sha }}
+        
+        docker build -t $IMAGE_ID:$VERSION .
+        docker push $IMAGE_ID:$VERSION
+        
+    - name: Update Kubernetes Manifests
+      run: |
+        REPO_OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+        IMAGE_ID=ghcr.io/$REPO_OWNER/leaky-app
+        VERSION=${{ github.sha }}
+        
+        # Find the line with "image:" and replace it with the new tag
+        sed -i "s|image: .*leaky-app.*|image: $IMAGE_ID:$VERSION|g" k8s/deployments.yaml
+        
+    - name: Commit and Push changes
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+        git add k8s/deployments.yaml
+        git commit -m "GitOps: Auto-update image tag to ${{ github.sha }}" || echo "No changes to commit"
+        git push
