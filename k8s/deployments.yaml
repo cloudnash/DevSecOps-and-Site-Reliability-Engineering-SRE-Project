@@ -38,9 +38,9 @@ spec:
       containers:
       - name: leaky-app
 <<<<<<< HEAD
-        image: ghcr.io/cloudnash/leaky-app:d765dd1ca0981e1653a9c0d8ad17b331321569dc
+        image: ghcr.io/cloudnash/leaky-app:0185d2b08c0cf6ddb8afd589886c20e0358e59c6
 =======
-        image: ghcr.io/cloudnash/leaky-app:latest
+        image: ghcr.io/cloudnash/leaky-app:0185d2b08c0cf6ddb8afd589886c20e0358e59c6
         ports:
         - containerPort: 8080
         envFrom:
@@ -81,7 +81,7 @@ spec:
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:latest
+        image: ghcr.io/cloudnash/leaky-app:0185d2b08c0cf6ddb8afd589886c20e0358e59c6
         ports:
         - containerPort: 8080
         envFrom:
@@ -122,7 +122,7 @@ spec:
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:latest
+        image: ghcr.io/cloudnash/leaky-app:0185d2b08c0cf6ddb8afd589886c20e0358e59c6
         ports:
         - containerPort: 8080
         envFrom:
