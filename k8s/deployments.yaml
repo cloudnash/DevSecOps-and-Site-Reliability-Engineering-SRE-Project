@@ -1,8 +1,25 @@
-
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-service
+  namespace: leaky-app-ns
+spec:
+  type: ClusterIP
+  selector:
+    app: leaky-app # This routes traffic to v1, v2, and v3
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+---
+# ==========================================
+# DEPLOYMENT V1
+# ==========================================
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: leaky-app-v1
+  namespace: leaky-app-ns
 spec:
   replicas: 1
   selector:
@@ -13,6 +30,111 @@ spec:
       labels:
         app: leaky-app
     spec:
+      serviceAccountName: app-sa
+      initContainers:
+      - name: init-setup
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo "Enterprise init process completed"']
       containers:
       - name: leaky-app
+<<<<<<< HEAD
         image: ghcr.io/cloudnash/leaky-app:d765dd1ca0981e1653a9c0d8ad17b331321569dc
+=======
+        image: ghcr.io/cloudnash/leaky-app:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secret
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "400Mi" # CRITICAL: Forces OOMKilled
+            cpu: "500m"
+---
+# ==========================================
+# DEPLOYMENT V2
+# ==========================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaky-app-v2
+  namespace: leaky-app-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leaky-app
+  template:
+    metadata:
+      labels:
+        app: leaky-app
+    spec:
+      serviceAccountName: app-sa
+      initContainers:
+      - name: init-setup
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo "Enterprise init process completed"']
+      containers:
+      - name: leaky-app
+        image: ghcr.io/cloudnash/leaky-app:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secret
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "400Mi" 
+            cpu: "500m"
+---
+# ==========================================
+# DEPLOYMENT V3
+# ==========================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaky-app-v3
+  namespace: leaky-app-ns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: leaky-app
+  template:
+    metadata:
+      labels:
+        app: leaky-app
+    spec:
+      serviceAccountName: app-sa
+      initContainers:
+      - name: init-setup
+        image: busybox:1.28
+        command: ['sh', '-c', 'echo "Enterprise init process completed"']
+      containers:
+      - name: leaky-app
+        image: ghcr.io/cloudnash/leaky-app:latest
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: app-config
+        - secretRef:
+            name: app-secret
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "100m"
+          limits:
+            memory: "400Mi" 
+            cpu: "500m"
+>>>>>>> cb24264 (Added enterprise manifests)
