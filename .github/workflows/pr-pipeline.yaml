@@ -20,14 +20,14 @@ jobs:
         pip install -r requirements.txt || true
         
     - name: Code Linting (Flake8)
-      run: flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+      run: flake8 app/ --count --select=E9,F63,F7,F82 --show-source --statistics
       
     - name: SAST Scanning (Bandit)
       # -s B104 explicitly ignores the "binding to 0.0.0.0" warning
-      run: bandit -r . -s B104 
+      run: bandit -r /app -s B104 
       
     - name: Unit Tests (Pytest)
-      run: pytest || true
+      run: pytest tests/
       
     - name: Build local container for scanning
       run: docker build -t test-image:latest .
