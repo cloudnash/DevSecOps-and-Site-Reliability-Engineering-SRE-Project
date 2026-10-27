@@ -25,10 +25,12 @@ spec:
   selector:
     matchLabels:
       app: leaky-app
+      version: v1
   template:
     metadata:
       labels:
         app: leaky-app
+        version: v1
     spec:
       serviceAccountName: app-sa
       initContainers:
@@ -66,10 +68,12 @@ spec:
   selector:
     matchLabels:
       app: leaky-app
+      version: v2
   template:
     metadata:
       labels:
         app: leaky-app
+        version: v2
     spec:
       serviceAccountName: app-sa
       initContainers:
@@ -107,10 +111,12 @@ spec:
   selector:
     matchLabels:
       app: leaky-app
+      version: v3
   template:
     metadata:
       labels:
         app: leaky-app
+        version: v3
     spec:
       serviceAccountName: app-sa
       initContainers:
