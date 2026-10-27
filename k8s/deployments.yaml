@@ -12,9 +12,9 @@ spec:
       port: 80
       targetPort: 8080
 ---
-# ==========================================
+
 # DEPLOYMENT V1
-# ==========================================
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -37,9 +37,6 @@ spec:
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
       containers:
       - name: leaky-app
-<<<<<<< HEAD
-        image: ghcr.io/cloudnash/leaky-app:591129194559bf8e875831dd52faaa63bb0aa692
-=======
         image: ghcr.io/cloudnash/leaky-app:591129194559bf8e875831dd52faaa63bb0aa692
         ports:
         - containerPort: 8080
@@ -56,9 +53,9 @@ spec:
             memory: "400Mi" # CRITICAL: Forces OOMKilled
             cpu: "500m"
 ---
-# ==========================================
+
 # DEPLOYMENT V2
-# ==========================================
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -97,9 +94,9 @@ spec:
             memory: "400Mi" 
             cpu: "500m"
 ---
-# ==========================================
+
 # DEPLOYMENT V3
-# ==========================================
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -137,4 +134,3 @@ spec:
           limits:
             memory: "400Mi" 
             cpu: "500m"
->>>>>>> cb24264 (Added enterprise manifests)
