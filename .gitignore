@@ -1,0 +1,6 @@
+.git
+.github
+k8s
+__pycache__
+*.pyc
+venv
