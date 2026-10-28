@@ -37,6 +37,13 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
+        resources:           # Add this entire block
+          requests:          #
+            memory: "50Mi"   #
+            cpu: "50m"       #
+          limits:            #
+            memory: "50Mi"   #
+            cpu: "50m"
       containers:
       - name: leaky-app
         image: ghcr.io/cloudnash/leaky-app:2462d95041aafb623fcd002d723dd767cbed8b42
@@ -80,6 +87,13 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
+        resources:           # Add this entire block
+          requests:          #
+            memory: "50Mi"   #
+            cpu: "50m"       #
+          limits:            #
+            memory: "50Mi"   #
+            cpu: "50m"
       containers:
       - name: leaky-app
         image: ghcr.io/cloudnash/leaky-app:2462d95041aafb623fcd002d723dd767cbed8b42
@@ -123,6 +137,13 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
+        resources:           # Add this entire block
+          requests:          #
+            memory: "50Mi"   #
+            cpu: "50m"       #
+          limits:            #
+            memory: "50Mi"   #
+            cpu: "50m"
       containers:
       - name: leaky-app
         image: ghcr.io/cloudnash/leaky-app:2462d95041aafb623fcd002d723dd767cbed8b42
