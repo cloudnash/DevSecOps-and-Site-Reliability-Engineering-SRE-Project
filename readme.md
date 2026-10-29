@@ -11,6 +11,12 @@ Your mission is to build a secure delivery pipeline, implement a GitOps deployme
 - Security controls are currently enforced **only** in the CI/CD pipeline. 
 - Provide clear documentation on your setup, architecture, and instructions to reproduce your environment.
 
+
+## Flowchart
+
+<img width="2807" height="8192" alt="ArgoCD Kubernetes GitOps Deployment Pipeline-2026-10-29-092910" src="https://github.com/user-attachments/assets/7f500674-8a1c-431d-a0b7-69506cd47261" />
+
+
 ---
 
 ## Task 1: Dockerization & Secure CI/CD Pipeline
