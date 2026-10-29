@@ -46,7 +46,7 @@ spec:
             cpu: "50m"
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:ae57e14bfc242c53998316c2250ff718ff24d375
+        image: ghcr.io/cloudnash/leaky-app:d96a80ab16a50080b1c09f150381811d32d77dc2
         ports:
         - containerPort: 8080
         envFrom:
@@ -96,7 +96,7 @@ spec:
             cpu: "50m"
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:ae57e14bfc242c53998316c2250ff718ff24d375
+        image: ghcr.io/cloudnash/leaky-app:d96a80ab16a50080b1c09f150381811d32d77dc2
         ports:
         - containerPort: 8080
         envFrom:
@@ -146,7 +146,7 @@ spec:
             cpu: "50m"
       containers:
       - name: leaky-app
-        image: ghcr.io/cloudnash/leaky-app:ae57e14bfc242c53998316c2250ff718ff24d375
+        image: ghcr.io/cloudnash/leaky-app:d96a80ab16a50080b1c09f150381811d32d77dc2
         ports:
         - containerPort: 8080
         envFrom:
