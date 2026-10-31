@@ -87,5 +87,37 @@ Visibility into the cluster and the application's behavior is critical.
 
 ## Results
 
+**ARGO-CD UI**
+
 <img width="1852" height="925" alt="argocd UI" src="https://github.com/user-attachments/assets/5c3f4230-ded6-4cc6-9f4a-84e51fa42725" />
 
+
+**LOKI-STREAMS-OF-LOGS**
+
+<img width="1856" height="920" alt="grafana-loki-logs" src="https://github.com/user-attachments/assets/5b2b5d8e-a583-4a0d-9be4-257d44fb2964" />
+
+
+**LOKI-GRAFANA-PANEL-VISs**
+
+<img width="1857" height="922" alt="loki-logs-visuals" src="https://github.com/user-attachments/assets/eaf43a89-9392-42c0-8fc0-64a601c29ddb" />
+
+
+**PROMETHEUS-GARFANA-PANEL-VISs**
+
+<img width="1843" height="929" alt="prometheus-grafan-metrics" src="https://github.com/user-attachments/assets/fa27e49f-9352-402f-aff3-6af55108b700" />
+
+**NODE-EXPORTER-METRICS**
+
+<img width="1805" height="921" alt="grafans-ow" src="https://github.com/user-attachments/assets/fc5aaed0-bb36-461f-b878-95d5cf56ddfd" />
+
+
+**OOM-KILLED-FIRING**
+
+<img width="1150" height="585" alt="alertin-firing-on-grafana" src="https://github.com/user-attachments/assets/ccbaf4c8-ce7d-48c1-84f3-481954667bc1" />
+
+<img width="1170" height="822" alt="alert-rules" src="https://github.com/user-attachments/assets/c3de7b7b-a391-45aa-bbb0-0f20772967e0" />
+
+
+**APP-HEALTH-CHECKS-FAILURES**
+
+<img width="1168" height="845" alt="Poddown" src="https://github.com/user-attachments/assets/83c1dbcf-eb5d-49cd-a2e6-8d0778caf4f1" />
