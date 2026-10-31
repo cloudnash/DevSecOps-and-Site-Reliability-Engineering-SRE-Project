@@ -37,12 +37,12 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
-        resources:           # Add this entire block
-          requests:          #
-            memory: "50Mi"   #
-            cpu: "50m"       #
-          limits:            #
-            memory: "50Mi"   #
+        resources:           # Adding this block to add resource of initCont
+          requests:          
+            memory: "50Mi"   
+            cpu: "50m"       
+          limits:            
+            memory: "50Mi"   
             cpu: "50m"
       containers:
       - name: leaky-app
@@ -87,12 +87,12 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
-        resources:           # Add this entire block
-          requests:          #
-            memory: "50Mi"   #
-            cpu: "50m"       #
-          limits:            #
-            memory: "50Mi"   #
+        resources:           # Adding this block to add resource of initCont
+          requests:          
+            memory: "50Mi"   
+            cpu: "50m"       
+          limits:            
+            memory: "50Mi"   
             cpu: "50m"
       containers:
       - name: leaky-app
@@ -137,12 +137,12 @@ spec:
       - name: init-setup
         image: busybox:1.28
         command: ['sh', '-c', 'echo "Enterprise init process completed"']
-        resources:           # Add this entire block
-          requests:          #
-            memory: "50Mi"   #
-            cpu: "50m"       #
-          limits:            #
-            memory: "50Mi"   #
+        resources:           # Adding this block to add resource of initCont
+          requests:          
+            memory: "50Mi"   
+            cpu: "50m"       
+          limits:            
+            memory: "50Mi"   
             cpu: "50m"
       containers:
       - name: leaky-app
