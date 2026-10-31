@@ -1,8 +1,13 @@
 # DevSecOps & Site Reliability Engineering (SRE) Assessment
 
+A local DevSecOps and SRE pipeline demonstrating GitOps, automated security gates, and Kubernetes observability for a simulated memory leak.
+
+This repository contains a complete, local DevSecOps and Site Reliability Engineering (SRE) deployment lifecycle. It demonstrates how to securely build, deploy, and monitor an unpredictable application in Kubernetes.
+
+
 ## Overview
 
-You have been assigned to deploy and manage a new microservice for our infrastructure. The application is a lightweight Python service that is known to have a memory leak, it starts at around 100MB and slowly increases its memory footprint to 1GB over the course of 5 minutes. It also generates standard application logs. 
+I have been assigned to deploy and manage a new microservice for our infrastructure. The application is a lightweight Python service that is known to have a memory leak, it starts at around 100MB and slowly increases its memory footprint to 1GB over the course of 5 minutes. It also generates standard application logs. 
 
 Your mission is to build a secure delivery pipeline, implement a GitOps deployment strategy, and set up robust observability and alerting to catch the application when it inevitably crashes.
 
